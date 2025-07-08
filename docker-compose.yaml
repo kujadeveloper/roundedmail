@@ -8,8 +8,8 @@ services:
     ports:
       - "8080:80"
     environment:
-      - ROUNDCUBEMAIL_DEFAULT_HOST=mail.bbsenerji.com
-      - ROUNDCUBEMAIL_SMTP_SERVER=mail.bbsenerji.com
+      - ROUNDCUBEMAIL_DEFAULT_HOST=mail.***.com
+      - ROUNDCUBEMAIL_SMTP_SERVER=mail.***.com
       - ROUNDCUBEMAIL_SMTP_PORT=587
       - ROUNDCUBEMAIL_SMTP_USER=%u
       - ROUNDCUBEMAIL_SMTP_PASS=%p
