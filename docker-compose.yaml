@@ -1,0 +1,35 @@
+version: '3.7'
+
+services:
+  roundcube:
+    image: roundcube/roundcubemail:latest
+    container_name: roundcube
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      - ROUNDCUBEMAIL_DEFAULT_HOST=mail.bbsenerji.com
+      - ROUNDCUBEMAIL_SMTP_SERVER=mail.bbsenerji.com
+      - ROUNDCUBEMAIL_SMTP_PORT=587
+      - ROUNDCUBEMAIL_SMTP_USER=%u
+      - ROUNDCUBEMAIL_SMTP_PASS=%p
+    volumes:
+      - roundcube_data:/var/roundcube
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:10.6
+    container_name: roundcube_db
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=supersecret
+      - MYSQL_DATABASE=roundcube
+      - MYSQL_USER=roundcube
+      - MYSQL_PASSWORD=roundcubepass
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
+  roundcube_data:
